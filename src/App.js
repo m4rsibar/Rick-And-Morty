@@ -13,73 +13,71 @@ class App extends Component {
   };
 
   toTitleCase = str => {
-    return str.replace(/\w\S*/g, function (txt) {
+    return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
   };
 
   randomizeCharacters = () => {
     let randomNumber = Math.floor(Math.random() * 25) + 1;
-    this.fetchSomeData(`https://rickandmortyapi.com/api/character/?page=${randomNumber}`, "characters")
-  }
-
+    this.fetchSomeData(
+      `https://rickandmortyapi.com/api/character/?page=${randomNumber}`,
+      "characters"
+    );
+  };
 
   componentDidMount() {
     this.fetchSomeData(
-      'https://rickandmortyapi.com/api/character/',
+      "https://rickandmortyapi.com/api/character/",
       "characters"
     );
     this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
   }
 
-  componentDidUpdate() {
-    this.scroll()
-  }
+  // componentDidUpdate() {
+  //   this.scroll()
+  // }
 
   fetchSomeData = (url, stateToSet) => {
     fetch(url)
       .then(res => res.json())
-      .then(data => this.setState({
-        [stateToSet]: data.results,
-        [`${stateToSet}Next`]: data.info.next,
-        [`${stateToSet}Prev`]: data.info.prev
-      }))
+      .then(data =>
+        this.setState({
+          [stateToSet]: data.results,
+          [`${stateToSet}Next`]: data.info.next,
+          [`${stateToSet}Prev`]: data.info.prev
+        })
+      )
       .catch(err => alert(err));
   };
 
   scroll = () => {
     var element = document.querySelector(".prevIcon");
     element.scrollIntoView({ behavior: "smooth" });
-  }
-
-
+  };
 
   render() {
-    console.log(this.state.charactersNext)
+    console.log(this.state.charactersNext);
     return (
       <BrowserRouter>
         <div className="App">
           <Header
             randomizeCharacters={this.randomizeCharacters}
+            next={this.state.charactersNext}
+            prev={this.state.charactersPrev}
+            fetchSomeData={this.fetchSomeData}
           />
           <div className="search">
-
-            <Route exact path="/" component={() => (
-              <CharacterList
-                characters={this.state.characters}
-                fetchSomeData={this.fetchSomeData}
-                next={this.state.charactersNext}
-                prev={this.state.charactersPrev}
-              />
-            )}
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <CharacterList characters={this.state.characters} />
+              )}
             />
             <Route
               path="/planets"
-              component={() => (
-                <PlanetsList
-                  planets={this.state.planets}
-                />
-              )}
+              component={() => <PlanetsList planets={this.state.planets} />}
             />
           </div>
 
@@ -101,16 +99,6 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
 
 // onSearchChange = event => {
 //   this.setState({search: event.target.value})
