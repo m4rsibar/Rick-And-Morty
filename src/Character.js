@@ -47,7 +47,7 @@ class Character extends Component {
                 <div className="locationBox">
                   <img
                     className="location"
-                    src="../icons8-marker-480.png"
+                    src="https://img.icons8.com/material/24/000000/marker.png"
                     alt="Location Icon"
                   />
                   <span className="locationText">
