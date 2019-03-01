@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CharacterList from "./CharacterList";
 import Header from "./Header";
 import PlanetsList from "./PlanetsList";
+import NotFound from "./NotFound";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 class App extends Component {
   state = {
     characters: [],
     planets: [],
     search: "",
-    selectedCharacter: null
+    selectedCharacter: null,
+    appearHome: true
   };
 
   toTitleCase = str => {
@@ -34,9 +37,13 @@ class App extends Component {
     this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
   }
 
-  // componentDidUpdate() {
-  //   this.scroll()
-  // }
+  componentDidUpdate() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
 
   fetchSomeData = (url, stateToSet) => {
     fetch(url)
@@ -51,47 +58,36 @@ class App extends Component {
       .catch(err => alert(err));
   };
 
-  scroll = () => {
-    var element = document.querySelector(".prevIcon");
-    element.scrollIntoView({ behavior: "smooth" });
-  };
-
   render() {
-    console.log(this.state.charactersNext);
     return (
       <BrowserRouter>
         <div className="App">
           <Header
             randomizeCharacters={this.randomizeCharacters}
-            next={this.state.charactersNext}
-            prev={this.state.charactersPrev}
+            nextCharacter={this.state.charactersNext}
+            prevCharacter={this.state.charactersPrev}
+            nextPlanet={this.state.planetsNext}
+            prevPlanet={this.state.planetsPrev}
             fetchSomeData={this.fetchSomeData}
           />
-          <div className="search">
+
+          <Switch>
             <Route
               exact
               path="/"
-              component={() => (
+              render={() => (
                 <CharacterList characters={this.state.characters} />
               )}
             />
             <Route
               path="/planets"
-              component={() => <PlanetsList planets={this.state.planets} />}
+              render={() => <PlanetsList planets={this.state.planets} />}
             />
-          </div>
 
-          {this.state.selectedCharacter && (
-            <div className="result">
-              <img
-                className="characterImage"
-                src={this.state.selectedCharacter.results[0].image}
-                alt={this.selectedCharacter.name}
-              />
-              <p>Species:{this.state.selectedCharacter.results[0].species}</p>
-              <p>Status:{this.state.selectedCharacter.results[0].status}</p>
-            </div>
-          )}
+            {/* <Route path="/planets/:planetId" render={() => <Planet />} /> */}
+
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
@@ -99,27 +95,3 @@ class App extends Component {
 }
 
 export default App;
-
-// onSearchChange = event => {
-//   this.setState({search: event.target.value})
-// }
-
-// generateSearchResults=(search)=>{
-//   if(search===""){
-//     return this.state.characters
-//   }else{
-//     return this.state.characters.filter(p=>p.name.includes(this.toTitleCase(search)))
-//   }
-// }
-
-// selectCharacter= async (name)=>{
-//   const res= await fetch(`https://rickandmortyapi.com/api/character/?name=${name}`,
-//   {cache: "force-cache"})
-//   const json= await res.json()
-//   this.setState({selectedCharacter:json, search:name})
-// }
-
-/* <input
-              onChange={this.onSearchChange}
-              type="text"
-              value={this.state.search}/> */

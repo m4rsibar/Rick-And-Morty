@@ -1,18 +1,39 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Next extends Component {
+  //returns which url to change(urls passed through props) to the next page based on the location path name and plugs it into to the onClick's data fetching function
+  determineNextPageUrl = () => {
+    if (this.props.location.pathname === "/") {
+      return `${this.props.nextCharacter}`;
+    } else if (this.props.location.pathname === "/planets") {
+      return `${this.props.nextPlanet}`;
+    }
+  };
+  //returns the state needed to be updated with the new pages information based on the location pathname, and plugs it into to the onClick's data fetching function
+  determineStateToSet = () => {
+    if (this.props.location.pathname === "/") {
+      return "characters";
+    } else if (this.props.location.pathname === "/planets") {
+      return "planets";
+    }
+  };
+
   render() {
     return (
-      <span className="nextArrow">
+      <span>
         <Link
-          to="/"
+          to="#"
           onClick={() => {
-            this.props.fetchSomeData(this.props.next, "characters");
+            this.props.fetchSomeData(
+              this.determineNextPageUrl(),
+              this.determineStateToSet()
+            );
           }}
         >
           <img
-            src="https://img.icons8.com/material/30/000000/circled-chevron-right.png"
+            src="https://img.icons8.com/material/34/000000/forward.png"
             alt="Next Page"
             title="Next Page"
           />
@@ -22,4 +43,4 @@ class Next extends Component {
   }
 }
 
-export default Next;
+export default withRouter(Next);

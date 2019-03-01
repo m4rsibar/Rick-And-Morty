@@ -1,13 +1,22 @@
-import React from "react";
-import Planet from './Planet'
+import React, { Component } from "react";
+import Planet from "./Planet";
+import { withRouter } from "react-router-dom";
 
-const PlanetsList = props => {
+class PlanetsList extends Component {
+  state = {
+    fixedHeader: false
+  };
 
-  return (
-    <div className="planetsBox">
-      {props.planets.map(p => <Planet p={p} />)}
-    </div>
-  );
-};
+  render() {
+    // console.log("props ", this.props);
+    return (
+      <div className="planetsBox">
+        {this.props.planets.map(p => (
+          <Planet p={p} id={p.id} />
+        ))}
+      </div>
+    );
+  }
+}
 
-export default PlanetsList;
+export default withRouter(PlanetsList);
