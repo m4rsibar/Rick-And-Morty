@@ -60,7 +60,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <div className="App">
           <Header
             randomizeCharacters={this.randomizeCharacters}
