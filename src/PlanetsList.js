@@ -8,11 +8,10 @@ class PlanetsList extends Component {
   };
 
   render() {
-    // console.log("props ", this.props);
     return (
       <div className="planetsBox">
         {this.props.planets.map(p => (
-          <Planet p={p} id={p.id} />
+          <Planet p={p} id={p.id} key={p.id} />
         ))}
       </div>
     );

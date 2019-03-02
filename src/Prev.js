@@ -8,6 +8,8 @@ class Prev extends Component {
       return `${this.props.prevCharacter}`;
     } else if (this.props.location.pathname === "/planets") {
       return `${this.props.prevPlanet}`;
+    } else if (this.props.location.pathname === "/episodes") {
+      return `${this.props.prevEpisode}`;
     }
   };
 
@@ -16,6 +18,8 @@ class Prev extends Component {
       return "characters";
     } else if (this.props.location.pathname === "/planets") {
       return "planets";
+    } else if (this.props.location.pathname === "/episodes") {
+      return "episodes";
     }
   };
 

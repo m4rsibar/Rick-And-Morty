@@ -4,12 +4,13 @@ import CharacterList from "./CharacterList";
 import Header from "./Header";
 import PlanetsList from "./PlanetsList";
 import NotFound from "./NotFound";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import EpisodeList from "./EpisodeList";
 
 class App extends Component {
   state = {
     characters: [],
     planets: [],
+    episodes: [],
     search: "",
     selectedCharacter: null,
     appearHome: true
@@ -35,6 +36,7 @@ class App extends Component {
       "characters"
     );
     this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
+    this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
   }
 
   componentDidUpdate() {
@@ -55,7 +57,7 @@ class App extends Component {
           [`${stateToSet}Prev`]: data.info.prev
         })
       )
-      .catch(err => alert(err));
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -68,6 +70,8 @@ class App extends Component {
             prevCharacter={this.state.charactersPrev}
             nextPlanet={this.state.planetsNext}
             prevPlanet={this.state.planetsPrev}
+            nextEpisode={this.state.episodesNext}
+            prevEpisode={this.state.episodesPrev}
             fetchSomeData={this.fetchSomeData}
           />
 
@@ -83,9 +87,10 @@ class App extends Component {
               path="/planets"
               render={() => <PlanetsList planets={this.state.planets} />}
             />
-
-            {/* <Route path="/planets/:planetId" render={() => <Planet />} /> */}
-
+            <Route
+              path="/episodes"
+              render={() => <EpisodeList episodes={this.state.episodes} />}
+            />
             <Route component={NotFound} />
           </Switch>
         </div>

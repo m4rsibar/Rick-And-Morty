@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
+
 body {
   background: rgb(156, 218, 231);
   padding: 0;
@@ -106,6 +108,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 65%;
+  z-index: 99999999999999999;
 }
 
 .expandArrowBox {
@@ -135,6 +138,11 @@ body {
 
 .extendedInfoList {
   list-style: none;
+  padding-top: 1em;
+}
+
+.extendedInfoList li {
+  padding-top: 0.3em;
 }
 
 .active {
@@ -168,14 +176,16 @@ body {
   color: black;
 }
 
-.planetsBox {
+.planetsBox,
+.episodesBox {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding-top: 5em;
 }
 
-.planetContainer {
+.planetContainer,
+.episodeContainer {
   height: 18em;
   background-color: white;
   position: relative;
@@ -187,10 +197,46 @@ body {
   position: relative;
 }
 
+.episodeContainer:hover {
+  box-shadow: 8px 10px 16px rgba(0, 0, 0, 0.199);
+  transition: 0.3s ease;
+}
+
+.planetContainer h4 {
+  padding-left: 1em;
+}
+
+.planetContainer div {
+  padding-left: 3em;
+}
+
 .planetIcon {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.episodeNumber {
+  position: absolute;
+  font-family: "Abril Fatface", cursive;
+  font-size: 5em;
+  left: -0.5em;
+  color: #00000091;
+}
+
+.episodeInfo {
+  padding-top: 3em;
+  margin-left: 3em;
+  padding-left: 1em;
+}
+
+.episodeName {
+  font-size: 2em;
+}
+
+.airedSeason {
+  position: absolute;
+  bottom: 10px;
 }
 
 .fade-appear {

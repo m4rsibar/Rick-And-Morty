@@ -3,11 +3,8 @@ import { NavLink, Link } from "react-router-dom";
 import Next from "./Next";
 import Prev from "./Prev";
 import { withRouter } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
 
 const Header = props => {
-  console.log(props.location.pathname);
-
   return (
     <div
       className="headerBox"
@@ -23,7 +20,7 @@ const Header = props => {
           <NavLink to="/planets">Planets</NavLink>
         </li>
         <li>
-          <NavLink to="#">Episodes</NavLink>
+          <NavLink to="/episodes">Episodes</NavLink>
         </li>
         <li>
           <Link to="#" onClick={() => props.randomizeCharacters()}>
@@ -32,6 +29,9 @@ const Header = props => {
               alt="Randomize"
               title="Randomize Characters"
               className="randomize"
+              style={{
+                display: props.location.pathname === "/" ? "initial" : "none"
+              }}
             />
           </Link>
         </li>
@@ -40,11 +40,13 @@ const Header = props => {
             fetchSomeData={props.fetchSomeData}
             prevPlanet={props.prevPlanet}
             prevCharacter={props.prevCharacter}
+            prevEpisode={props.prevEpisode}
           />
           <Next
             fetchSomeData={props.fetchSomeData}
             nextCharacter={props.nextCharacter}
             nextPlanet={props.nextPlanet}
+            nextEpisode={props.nextEpisode}
           />
         </div>
       </ul>

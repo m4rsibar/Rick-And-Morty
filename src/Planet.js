@@ -14,7 +14,7 @@ const Planet = props => {
         <br />
         <span>Dimension:{props.p.dimension}</span>
         <br />
-        <span>Created: {props.p.created}</span>
+        <span>Created: {props.p.created} </span>
       </div>
     </div>
   );
