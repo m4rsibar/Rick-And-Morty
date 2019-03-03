@@ -5,15 +5,15 @@ import Header from "./Header";
 import PlanetsList from "./PlanetsList";
 import NotFound from "./NotFound";
 import EpisodeList from "./EpisodeList";
+import Search from "./Search";
 
 class App extends Component {
   state = {
+    allCharacters: [],
     characters: [],
     planets: [],
     episodes: [],
-    search: "",
-    selectedCharacter: null,
-    appearHome: true
+    search: ""
   };
 
   toTitleCase = str => {
@@ -37,7 +37,32 @@ class App extends Component {
     );
     this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
     this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
+    this.gatherAllCharacters();
   }
+
+  gatherAllCharacters = () => {
+    fetch(`https://rickandmortyapi.com/api/character/`)
+      .then(res => res.json())
+      .then(data => {
+        let characters = data.results;
+        const totalPages = data.info.pages;
+        if (totalPages > 1) {
+          for (let i = 2; i <= totalPages; i++) {
+            let page = i;
+            fetch(`https://rickandmortyapi.com/api/character/?page=${i}`)
+              .then(res => res.json())
+              .then(data => {
+                characters = characters.concat(data.results);
+                if (page === totalPages) {
+                  this.setState({ allCharacters: characters });
+                }
+              });
+          }
+        } else {
+          console.log("none");
+        }
+      });
+  };
 
   componentDidUpdate() {
     window.scroll({
@@ -60,6 +85,13 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
+  // handleSubmit = text => {
+  //   let result = this.state.allCharacters.filter(ch =>
+  //     ch.name.toLowerCase().includes(text.toLowerCase())
+  //   );
+  //   console.log(result);
+  // };
+
   render() {
     return (
       <BrowserRouter>
@@ -80,7 +112,10 @@ class App extends Component {
               exact
               path="/"
               render={() => (
-                <CharacterList characters={this.state.characters} />
+                <CharacterList
+                  characters={this.state.characters}
+                  search={this.state.search}
+                />
               )}
             />
             <Route
@@ -90,6 +125,15 @@ class App extends Component {
             <Route
               path="/episodes"
               render={() => <EpisodeList episodes={this.state.episodes} />}
+            />
+            <Route
+              path="/search"
+              render={() => (
+                <Search
+                  characters={this.state.allCharacters}
+                  handleSubmit={this.handleSubmit}
+                />
+              )}
             />
             <Route component={NotFound} />
           </Switch>
