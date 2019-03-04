@@ -106,6 +106,10 @@ class App extends Component {
             prevEpisode={this.state.episodesPrev}
             fetchSomeData={this.fetchSomeData}
           />
+          <img
+            src="https://img.icons8.com/material/34/000000/menu.png"
+            style={{ marginTop: "1em" }}
+          />
 
           <Switch>
             <Route

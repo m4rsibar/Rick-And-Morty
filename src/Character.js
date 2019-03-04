@@ -17,7 +17,7 @@ class Character extends Component {
 
     return (
       <TransitionGroup>
-        <CSSTransition in={true} appear={true} timeout={400} classNames="fade">
+        <CSSTransition appear={true} timeout={400} classNames="fade">
           <div className="cardContainer">
             <img
               className="characterIcon"
