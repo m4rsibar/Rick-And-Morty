@@ -245,19 +245,15 @@ body {
   height: 30px;
   width: 300px;
   font-size: 25px;
-  background: rgba(5, 5, 5, 0.418);
+  background: rgba(0, 0, 0, 0.877);
   color: white;
   padding-left: 0.2em;
   border-radius: 5px;
   box-shadow: 2px 5px 20px rgba(#777777, 0.5);
   position: absolute;
-  left: 40em;
+  left: 25em;
   top: 0.5em;
   padding: 0.3em;
-}
-
-.searchbar:focus {
-  background-color: black;
 }
 
 ::placeholder {
