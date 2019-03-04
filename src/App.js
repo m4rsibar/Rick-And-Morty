@@ -6,6 +6,7 @@ import PlanetsList from "./PlanetsList";
 import NotFound from "./NotFound";
 import EpisodeList from "./EpisodeList";
 import Search from "./Search";
+import Loading from "./Loading";
 
 class App extends Component {
   state = {
@@ -13,7 +14,8 @@ class App extends Component {
     characters: [],
     planets: [],
     episodes: [],
-    search: ""
+    search: "",
+    isLoading: true
   };
 
   toTitleCase = str => {
@@ -54,7 +56,10 @@ class App extends Component {
               .then(data => {
                 characters = characters.concat(data.results);
                 if (page === totalPages) {
-                  this.setState({ allCharacters: characters });
+                  this.setState({
+                    allCharacters: characters,
+                    isLoading: false
+                  });
                 }
               });
           }
@@ -82,15 +87,9 @@ class App extends Component {
           [`${stateToSet}Prev`]: data.info.prev
         })
       )
+      .then()
       .catch(err => console.log(err));
   };
-
-  // handleSubmit = text => {
-  //   let result = this.state.allCharacters.filter(ch =>
-  //     ch.name.toLowerCase().includes(text.toLowerCase())
-  //   );
-  //   console.log(result);
-  // };
 
   render() {
     return (
@@ -115,12 +114,16 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => (
-                <CharacterList
-                  characters={this.state.characters}
-                  search={this.state.search}
-                />
-              )}
+              render={() =>
+                this.state.isLoading ? (
+                  <Loading />
+                ) : (
+                  <CharacterList
+                    characters={this.state.characters}
+                    search={this.state.search}
+                  />
+                )
+              }
             />
             <Route
               path="/planets"
