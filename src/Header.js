@@ -26,6 +26,19 @@ class Header extends Component {
             <NavLink to="/episodes">Episodes</NavLink>
           </li>
           <li>
+            <NavLink
+              to="/search"
+              style={{
+                display:
+                  this.props.location.pathname === "/search"
+                    ? "none"
+                    : "initial"
+              }}
+            >
+              Search
+            </NavLink>
+          </li>
+          <li>
             <Link to="#" onClick={() => this.props.randomizeCharacters()}>
               <img
                 src="https://img.icons8.com/material/24/000000/synchronize.png"
@@ -39,7 +52,13 @@ class Header extends Component {
               />
             </Link>
           </li>
-          <div className="arrows">
+
+          <div
+            className="arrows"
+            style={{
+              display: this.props.location.pathname === "/search" ? "none" : ""
+            }}
+          >
             <Prev
               fetchSomeData={this.props.fetchSomeData}
               prevPlanet={this.props.prevPlanet}

@@ -10,6 +10,10 @@ class Search extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+  };
+
   render() {
     let results = this.props.characters;
     let searchText = this.state.searchText.trim().toLowerCase();
@@ -21,15 +25,18 @@ class Search extends Component {
     }
 
     return (
-      <div>
-        <form>
+      <div className>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="searchText"
-            placeholder="search"
+            placeholder="Search For a Character..."
             onChange={this.handleChange}
+            className="searchbar"
+            autocomplete="off"
           />
         </form>
+        {/* needs work, not the best way of optimizing */}
         {results.length < 100 ? (
           <div className="charactersBox">
             {results.map((c, index) => (
