@@ -122,7 +122,6 @@ class App extends Component {
               scroll={this.scroll}
             />
           </OutsideAlerter>
-
           {this.state.menuOpen ? (
             ""
           ) : (
@@ -148,10 +147,6 @@ class App extends Component {
                     search={this.state.search}
                     nextCharacter={this.state.charactersNext}
                     prevCharacter={this.state.charactersPrev}
-                    nextPlanet={this.state.planetsNext}
-                    prevPlanet={this.state.planetsPrev}
-                    nextEpisode={this.state.episodesNext}
-                    prevEpisode={this.state.episodesPrev}
                     fetchSomeData={this.fetchSomeData}
                     scroll={this.scroll}
                   />
@@ -164,7 +159,14 @@ class App extends Component {
                 this.state.isLoading ? (
                   <Loading />
                 ) : (
-                  <PlanetsList planets={this.state.planets} />
+                  <PlanetsList
+                    planets={this.state.planets}
+                    nextPlanet={this.state.planetsNext}
+                    prevPlanet={this.state.planetsPrev}
+                    fetchSomeData={this.fetchSomeData}
+                    toggleMenu={this.toggleMenu}
+                    scroll={this.scroll}
+                  />
                 )
               }
             />
@@ -174,7 +176,14 @@ class App extends Component {
                 this.state.isLoading ? (
                   <Loading />
                 ) : (
-                  <EpisodeList episodes={this.state.episodes} />
+                  <EpisodeList
+                    episodes={this.state.episodes}
+                    nextEpisode={this.state.episodesNext}
+                    prevEpisode={this.state.episodesPrev}
+                    fetchSomeData={this.fetchSomeData}
+                    toggleMenu={this.toggleMenu}
+                    scroll={this.scroll}
+                  />
                 )
               }
             />

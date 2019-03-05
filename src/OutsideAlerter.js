@@ -29,7 +29,7 @@ class OutsideAlerter extends Component {
       this.wrapperRef &&
       !this.wrapperRef.contains(event.target) &&
       this.props.menuOpen === true &&
-      window.innerWidth <= 600
+      window.innerWidth <= 768
     ) {
       this.props.toggleMenu();
     }
