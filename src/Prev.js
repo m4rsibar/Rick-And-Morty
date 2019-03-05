@@ -28,7 +28,8 @@ class Prev extends Component {
       <span className="previousArrow">
         <Link
           to="#"
-          onClick={() => {
+          onClick={e => {
+            e.preventDefault();
             this.props.fetchSomeData(this.choosePrev(), this.chooseData());
           }}
         >

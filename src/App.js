@@ -8,6 +8,8 @@ import EpisodeList from "./EpisodeList";
 import Search from "./Search";
 import Loading from "./Loading";
 
+import OutsideAlerter from "./OutsideAlerter";
+
 class App extends Component {
   state = {
     allCharacters: [],
@@ -70,19 +72,19 @@ class App extends Component {
       });
   };
 
-  toggleMenu = () => {
-    this.setState(prevState => ({
-      menuOpen: !prevState.menuOpen
-    }));
-  };
-
-  componentDidUpdate() {
+  scroll = () => {
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth"
     });
-  }
+  };
+
+  toggleMenu = () => {
+    this.setState(prevState => ({
+      menuOpen: !prevState.menuOpen
+    }));
+  };
 
   fetchSomeData = (url, stateToSet) => {
     fetch(url)
@@ -102,18 +104,24 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header
-            randomizeCharacters={this.randomizeCharacters}
-            nextCharacter={this.state.charactersNext}
-            prevCharacter={this.state.charactersPrev}
-            nextPlanet={this.state.planetsNext}
-            prevPlanet={this.state.planetsPrev}
-            nextEpisode={this.state.episodesNext}
-            prevEpisode={this.state.episodesPrev}
-            fetchSomeData={this.fetchSomeData}
+          <OutsideAlerter
             menuOpen={this.state.menuOpen}
             toggleMenu={this.toggleMenu}
-          />
+          >
+            <Header
+              randomizeCharacters={this.randomizeCharacters}
+              nextCharacter={this.state.charactersNext}
+              prevCharacter={this.state.charactersPrev}
+              nextPlanet={this.state.planetsNext}
+              prevPlanet={this.state.planetsPrev}
+              nextEpisode={this.state.episodesNext}
+              prevEpisode={this.state.episodesPrev}
+              fetchSomeData={this.fetchSomeData}
+              menuOpen={this.state.menuOpen}
+              toggleMenu={this.toggleMenu}
+              scroll={this.scroll}
+            />
+          </OutsideAlerter>
 
           {this.state.menuOpen ? (
             ""
@@ -138,26 +146,50 @@ class App extends Component {
                   <CharacterList
                     characters={this.state.characters}
                     search={this.state.search}
+                    nextCharacter={this.state.charactersNext}
+                    prevCharacter={this.state.charactersPrev}
+                    nextPlanet={this.state.planetsNext}
+                    prevPlanet={this.state.planetsPrev}
+                    nextEpisode={this.state.episodesNext}
+                    prevEpisode={this.state.episodesPrev}
+                    fetchSomeData={this.fetchSomeData}
+                    scroll={this.scroll}
                   />
                 )
               }
             />
             <Route
               path="/planets"
-              render={() => <PlanetsList planets={this.state.planets} />}
+              render={() =>
+                this.state.isLoading ? (
+                  <Loading />
+                ) : (
+                  <PlanetsList planets={this.state.planets} />
+                )
+              }
             />
             <Route
               path="/episodes"
-              render={() => <EpisodeList episodes={this.state.episodes} />}
+              render={() =>
+                this.state.isLoading ? (
+                  <Loading />
+                ) : (
+                  <EpisodeList episodes={this.state.episodes} />
+                )
+              }
             />
             <Route
               path="/search"
-              render={() => (
-                <Search
-                  characters={this.state.allCharacters}
-                  handleSubmit={this.handleSubmit}
-                />
-              )}
+              render={() =>
+                this.state.isLoading ? (
+                  <Loading />
+                ) : (
+                  <Search
+                    characters={this.state.allCharacters}
+                    handleSubmit={this.handleSubmit}
+                  />
+                )
+              }
             />
             <Route component={NotFound} />
           </Switch>

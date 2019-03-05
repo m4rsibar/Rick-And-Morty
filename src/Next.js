@@ -29,11 +29,13 @@ class Next extends Component {
       <span>
         <Link
           to="#"
-          onClick={() => {
+          onClick={e => {
+            e.preventDefault();
             this.props.fetchSomeData(
               this.determineNextPageUrl(),
               this.determineStateToSet()
             );
+            this.props.scroll();
           }}
         >
           <img

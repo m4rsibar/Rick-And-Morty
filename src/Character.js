@@ -58,13 +58,16 @@ class Character extends Component {
                   <span>Status: </span>
                   <span className="status">{this.props.character.status}</span>
                 </div>
-                <span className="expandArrowBox">
+
+                <span
+                  onClick={this.toggleExpanded}
+                  className="downArrowContainer"
+                >
                   <img
                     className={`downArrow ${
                       this.state.isExpanded ? "rotate" : ""
                     }`}
-                    src="https://img.icons8.com/material/44/000000/expand-arrow.png"
-                    onClick={this.toggleExpanded}
+                    src="https://img.icons8.com/material/48/000000/expand-arrow.png"
                     alt="expand arrow"
                   />
                 </span>

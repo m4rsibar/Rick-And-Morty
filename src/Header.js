@@ -22,12 +22,12 @@ class Header extends Component {
               : { visibility: "hidden" }
           }
         >
-          <span className="xIcon">
+          {/* <span className="xIcon">
             <img
-              src="https://img.icons8.com/material/34/000000/delete-sign.png"
+              src="https://img.icons8.com/material/30/000000/delete-sign.png"
               onClick={this.props.toggleMenu}
             />
-          </span>
+          </span> */}
           <li>
             <NavLink exact to="/">
               Characters
@@ -84,6 +84,7 @@ class Header extends Component {
               nextCharacter={this.props.nextCharacter}
               nextPlanet={this.props.nextPlanet}
               nextEpisode={this.props.nextEpisode}
+              scroll={this.props.scroll}
             />
           </div>
         </ul>
