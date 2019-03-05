@@ -14,7 +14,20 @@ class Header extends Component {
             this.props.location.pathname === "/" || "/search" ? "fixed" : ""
         }}
       >
-        <ul className="headerUl">
+        <ul
+          className={this.props.menuOpen ? "headerUl open" : "headerUl closed"}
+          style={
+            this.props.menuOpen
+              ? { visiblity: "initial" }
+              : { visibility: "hidden" }
+          }
+        >
+          <span className="xIcon">
+            <img
+              src="https://img.icons8.com/material/34/000000/delete-sign.png"
+              onClick={this.props.toggleMenu}
+            />
+          </span>
           <li>
             <NavLink exact to="/">
               Characters

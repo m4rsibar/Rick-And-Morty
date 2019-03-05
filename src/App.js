@@ -15,7 +15,8 @@ class App extends Component {
     planets: [],
     episodes: [],
     search: "",
-    isLoading: true
+    isLoading: true,
+    menuOpen: false
   };
 
   toTitleCase = str => {
@@ -69,6 +70,12 @@ class App extends Component {
       });
   };
 
+  toggleMenu = () => {
+    this.setState(prevState => ({
+      menuOpen: !prevState.menuOpen
+    }));
+  };
+
   componentDidUpdate() {
     window.scroll({
       top: 0,
@@ -104,11 +111,21 @@ class App extends Component {
             nextEpisode={this.state.episodesNext}
             prevEpisode={this.state.episodesPrev}
             fetchSomeData={this.fetchSomeData}
+            menuOpen={this.state.menuOpen}
+            toggleMenu={this.toggleMenu}
           />
-          <img
-            src="https://img.icons8.com/material/34/000000/menu.png"
-            style={{ marginTop: "1em" }}
-          />
+
+          {this.state.menuOpen ? (
+            ""
+          ) : (
+            <span className="menuIcon">
+              <img
+                src="https://img.icons8.com/material/34/000000/menu.png"
+                style={{ marginTop: "1em" }}
+                onClick={this.toggleMenu}
+              />
+            </span>
+          )}
 
           <Switch>
             <Route
