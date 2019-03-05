@@ -290,6 +290,10 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+  .menuIcon {
+    cursor: pointer;
+  }
+
   .charactersBox {
     display: flex;
     flex-direction: column;
@@ -314,6 +318,7 @@ body {
     border-radius: 10px;
     z-index: 99999999999999999;
     margin-left: -10px;
+    transform: translateX(-100%);
   }
 
   .headerBox {
