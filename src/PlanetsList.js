@@ -5,10 +5,6 @@ import Next from "./Next";
 import Prev from "./Prev";
 
 class PlanetsList extends Component {
-  state = {
-    fixedHeader: false
-  };
-
   render() {
     return (
       <div className="planetsBox">

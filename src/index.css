@@ -10,12 +10,50 @@ body {
   scroll-behavior: smooth;
 }
 
-.charactersBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-top: 9em;
+/********************Navigation**************************/
+
+.headerBox {
+  width: 100%;
 }
+
+.headerUl {
+  display: flex;
+  list-style: none;
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-left: 3em;
+}
+
+.headerUl a {
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-right: 6em;
+  color: black;
+}
+.arrows {
+  position: absolute;
+  right: 0;
+  top: 0.5em;
+}
+
+.menuIcon {
+  position: fixed;
+  cursor: pointer;
+  z-index: 99999999999999;
+  padding-left: 0.5em;
+}
+
+.xIcon {
+  /* position: absolute; */
+  cursor: pointer;
+  z-index: 99999999999999;
+  right: 0;
+  top: 0;
+  margin-left: -5em;
+  padding-right: 2em;
+}
+
+/********************Character Page**************************/
 
 .cardContainer {
   height: 25em;
@@ -25,6 +63,12 @@ body {
   min-width: 20em;
   border-radius: 5px;
   margin-left: 5em;
+}
+.charactersBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 9em;
 }
 
 .characterIcon {
@@ -51,7 +95,7 @@ body {
   text-align: center;
 }
 
-.title {
+.name {
   display: block;
   text-align: center;
   font-family: "Poppins";
@@ -72,45 +116,12 @@ body {
   color: rgb(61, 61, 61);
 }
 
-.characterImage {
-  width: 100%;
-  height: 50%;
-}
-
-.headerBox {
-  width: 100%;
-}
-
-.headerUl {
-  display: flex;
-  list-style: none;
-  font-size: 1.2em;
-  text-decoration: none;
-  margin-left: 3em;
-}
-
-.headerUl a {
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  margin-right: 6em;
-  color: black;
-}
-
-.extended {
-  background-color: white;
-  position: relative;
-  border-radius: 4px;
-  height: 250px;
-  transition: 0.5s cubic-bezier(0.525, 0.66, 0.495, 1.4);
-  z-index: 2;
-}
-
-.extendedInfo {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 65%;
-  z-index: 200;
+.statusBox {
+  padding-top: 2em;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-family: "Poppins";
+  color: grey;
 }
 
 .expandArrowBox {
@@ -145,6 +156,23 @@ body {
   opacity: 0;
 }
 
+.extended {
+  background-color: white;
+  position: relative;
+  border-radius: 4px;
+  height: 250px;
+  transition: 0.5s cubic-bezier(0.525, 0.66, 0.495, 1.4);
+  z-index: 2;
+}
+
+.extendedInfo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 65%;
+  z-index: 200;
+}
+
 .extendedInfoList {
   list-style: none;
   padding-top: 1em;
@@ -152,27 +180,6 @@ body {
 
 .extendedInfoList li {
   padding-top: 0.3em;
-}
-
-.active {
-  background: white;
-  padding: 1em;
-  border-radius: 4px;
-  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.199);
-}
-
-.arrows {
-  position: absolute;
-  right: 0;
-  top: 0.5em;
-}
-
-.statusBox {
-  padding-top: 2em;
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-family: "Poppins";
-  color: grey;
 }
 
 .typeBox {
@@ -184,6 +191,14 @@ body {
   font-size: 0.85em;
   color: black;
 }
+/* .active {
+  background: white;
+  padding: 1em;
+  border-radius: 4px;
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.199);
+} */
+
+/********************Planets Page**************************/
 
 .planetsBox,
 .episodesBox {
@@ -191,6 +206,19 @@ body {
   flex-wrap: wrap;
   align-items: center;
   padding-top: 5em;
+}
+.planetContainer h4 {
+  padding-left: 1em;
+}
+
+.planetContainer div {
+  padding-left: 3em;
+}
+
+.planetIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .planetContainer,
@@ -206,23 +234,11 @@ body {
   position: relative;
 }
 
+/********************Episode Page**************************/
+
 .episodeContainer:hover {
   box-shadow: 8px 10px 16px rgba(0, 0, 0, 0.199);
   transition: 0.3s ease;
-}
-
-.planetContainer h4 {
-  padding-left: 1em;
-}
-
-.planetContainer div {
-  padding-left: 3em;
-}
-
-.planetIcon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
 }
 
 .episodeNumber {
@@ -248,6 +264,8 @@ body {
   bottom: 10px;
 }
 
+/********************Search Page**************************/
+
 .searchbar {
   outline: none;
   border: none;
@@ -270,6 +288,8 @@ body {
   text-align: center;
   color: rgba(255, 255, 255, 0.39);
 }
+
+/********************React Transition Group**************************/
 
 .fade-appear {
   opacity: 0;
@@ -298,125 +318,7 @@ body {
   opacity: 0;
 }
 
-.menuIcon {
-  position: fixed;
-  cursor: pointer;
-  z-index: 99999999999999;
-  padding-left: 0.5em;
-}
-
-.xIcon {
-  /* position: absolute; */
-  cursor: pointer;
-  z-index: 99999999999999;
-  right: 0;
-  top: 0;
-  margin-left: -5em;
-  padding-right: 2em;
-}
-
-@media only screen and (max-width: 768px) {
-  .searchbar {
-    z-index: 9999999999999999999999;
-  }
-
-  .xIcon {
-    position: absolute;
-    cursor: pointer;
-    z-index: 99999999999999;
-    right: -4em;
-    top: 0;
-  }
-  .menuIcon {
-    position: absolute;
-  }
-
-  .charactersBox {
-    display: flex;
-    flex-direction: column;
-    padding-top: 5em;
-  }
-
-  .cardContainer {
-    margin-left: 0;
-    margin-bottom: 5em;
-  }
-
-  .episodeContainer {
-    margin-left: 2.2em;
-  }
-
-  .headerUl {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    position: relative;
-    width: 45%;
-    -webkit-align-items: center;
-    align-items: center;
-    padding: 2em;
-    padding-top: 2.8em;
-    background: #ffffffed;
-    box-shadow: 1px 2px 17px #0000008c;
-    margin: 0;
-    border-radius: 10px;
-    z-index: 99999999999999999;
-    margin-left: -10px;
-    transform: translateX(-100%);
-  }
-
-  .open {
-    transform: translateX(0%);
-    transition: 0.4s cubic-bezier(0.17, 0.67, 0.54, 1.13);
-  }
-  .closed {
-    transform: translateX(-100%);
-    transition: 0.4s cubic-bezier(0.17, 0.67, 0.54, 1.13);
-  }
-
-  .blue {
-    background-color: "blue";
-  }
-
-  .headerBox {
-    height: 16em;
-    z-index: 33;
-    width: 50%;
-    height: 30em;
-    /* display: none; */
-  }
-
-  .headerUl li {
-    padding-bottom: 3em;
-  }
-
-  /* .headerUl li:first-child {
-    padding-top: 2em;
-  } */
-
-  .arrows {
-    position: initial;
-    bottom: 0;
-  }
-
-  .headerUl a {
-    margin: 0;
-  }
-
-  .planetContainer {
-    margin-left: 1em;
-  }
-
-  .searchbar {
-    width: 80%;
-    padding-left: 0.2em;
-    border-radius: 5px;
-    box-shadow: 2px 5px 20px rgba(#777777, 0.5);
-    position: absolute;
-    left: 2em;
-    top: 0.5em;
-    padding: 0.3em;
-  }
-}
+/********************Spinner**************************/
 
 .lds-ellipsis {
   display: inline-block;
@@ -478,4 +380,101 @@ body {
   position: absolute;
   top: 40%;
   left: 40%;
+}
+
+/********************Media Queries**************************/
+
+@media only screen and (max-width: 768px) {
+  /****Navigation*****/
+  .headerBox {
+    height: 16em;
+    z-index: 33;
+    width: 50%;
+    height: 30em;
+  }
+  .headerUl {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    width: 45%;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 2em;
+    padding-top: 2.8em;
+    background: #ffffffed;
+    box-shadow: 1px 2px 17px #0000008c;
+    margin: 0;
+    border-radius: 10px;
+    z-index: 99999999999999999;
+    margin-left: -10px;
+    transform: translateX(-100%);
+  }
+
+  .headerUl li {
+    padding-bottom: 3em;
+  }
+  .headerUl a {
+    margin: 0;
+  }
+
+  .xIcon {
+    position: absolute;
+    cursor: pointer;
+    z-index: 99999999999999;
+    right: -4em;
+    top: 0;
+  }
+  .menuIcon {
+    position: absolute;
+  }
+
+  .open {
+    transform: translateX(0%);
+    transition: 0.4s cubic-bezier(0.17, 0.67, 0.54, 1.13);
+  }
+  .closed {
+    transform: translateX(-100%);
+    transition: 0.4s cubic-bezier(0.17, 0.67, 0.54, 1.13);
+  }
+
+  /******Character Page******/
+  .charactersBox {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5em;
+  }
+
+  .cardContainer {
+    margin-left: 0;
+    margin-bottom: 5em;
+  }
+
+  /******Planets Page******/
+  .planetContainer {
+    margin-left: 1em;
+  }
+
+  /******Episodes Page******/
+  .episodeContainer {
+    margin-left: 2.2em;
+  }
+  /******Search Page******/
+
+  .searchbar {
+    width: 80%;
+    padding-left: 0.2em;
+    border-radius: 5px;
+    box-shadow: 2px 5px 20px rgba(#777777, 0.5);
+    position: absolute;
+    left: 2em;
+    top: 0.5em;
+    padding: 0.3em;
+    z-index: 9999999999999999999999;
+  }
+  /******Bottom Arrows******/
+
+  .arrows {
+    position: initial;
+    bottom: 0;
+  }
 }

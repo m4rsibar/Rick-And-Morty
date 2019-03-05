@@ -22,12 +22,6 @@ class Header extends Component {
               : { visibility: "hidden" }
           }
         >
-          {/* <span className="xIcon">
-            <img
-              src="https://img.icons8.com/material/30/000000/delete-sign.png"
-              onClick={this.props.toggleMenu}
-            />
-          </span> */}
           <li>
             <NavLink exact to="/">
               Characters

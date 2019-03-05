@@ -13,6 +13,7 @@ const CharacterList = props => {
             <Character key={index} character={c} />
           </CSSTransition>
         ))}
+        <br />
         <Prev
           fetchSomeData={props.fetchSomeData}
           prevPlanet={props.prevPlanet}

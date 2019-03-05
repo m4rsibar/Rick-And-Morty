@@ -41,7 +41,7 @@ class Character extends Component {
             </div>
 
             <div className="topBox">
-              <span className="title">{this.props.character.name}</span>
+              <span className="name">{this.props.character.name}</span>
               <div className="infoContainer">
                 <div className="locationBox">
                   <img

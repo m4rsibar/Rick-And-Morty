@@ -10,6 +10,7 @@ class EpisodeList extends Component {
         {this.props.episodes.map(e => (
           <Episode e={e} id={e.id} key={e.id} />
         ))}
+        <br />
         <Prev
           fetchSomeData={this.props.fetchSomeData}
           prevPlanet={this.props.prevPlanet}
