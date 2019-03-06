@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import CharacterList from "./CharacterList";
 import Header from "./Header";
 import PlanetsList from "./PlanetsList";
@@ -7,7 +7,6 @@ import NotFound from "./NotFound";
 import EpisodeList from "./EpisodeList";
 import Search from "./Search";
 import Loading from "./Loading";
-
 import OutsideAlerter from "./OutsideAlerter";
 
 class App extends Component {
@@ -44,6 +43,12 @@ class App extends Component {
     this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
     this.gatherAllCharacters();
   }
+
+  // closeMenuIfOpen = () => {
+  //   if (this.state.menuOpen === true) {
+  //     this.setState({ menuOpen: false });
+  //   }
+  // };
 
   gatherAllCharacters = () => {
     fetch(`https://rickandmortyapi.com/api/character/`)
@@ -102,7 +107,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="App">
           <OutsideAlerter
             menuOpen={this.state.menuOpen}
@@ -203,7 +208,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
