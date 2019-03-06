@@ -10,6 +10,29 @@ body {
   scroll-behavior: smooth;
 }
 
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(-5px);
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: 300ms ease;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
 /********************Navigation**************************/
 
 .headerBox {
