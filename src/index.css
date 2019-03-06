@@ -30,10 +30,19 @@ body {
   margin-right: 6em;
   color: black;
 }
+
 .arrows {
   position: absolute;
   right: 0;
-  top: 0.5em;
+  top: 0.8em;
+}
+
+@media only screen and (max-width: 1268px) {
+  .arrows {
+    position: absolute;
+    right: 0;
+    top: 4.3em;
+  }
 }
 
 .menuIcon {
@@ -205,7 +214,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding-top: 5em;
+  padding-top: 10em;
 }
 .planetContainer h4 {
   padding-left: 1em;
@@ -239,6 +248,9 @@ body {
 .episodeContainer:hover {
   box-shadow: 8px 10px 16px rgba(0, 0, 0, 0.199);
   transition: 0.3s ease;
+}
+.episodeContainer:hover .episodeNumber {
+  color: black;
 }
 
 .episodeNumber {
