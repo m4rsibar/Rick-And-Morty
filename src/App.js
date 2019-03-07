@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import CharacterList from "./CharacterList";
 import Header from "./Header";
 import PlanetsList from "./PlanetsList";
@@ -40,13 +40,6 @@ class App extends Component {
   componentDidUpdate = () => {
     localStorage.setItem("favs", JSON.stringify(this.state.favorites));
   };
-
-  // componentWillMount = () => {
-  //   localStorage.getItem("favs") &&
-  //     this.setState({
-  //       favorites: JSON.parse(localStorage.getItem("favs"))
-  //     });
-  // };
 
   updateFavsState = id => {
     this.setState(prevState => ({
@@ -132,7 +125,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="App">
           <OutsideAlerter
             menuOpen={this.state.menuOpen}
@@ -168,7 +161,7 @@ class App extends Component {
             render={({ location }) => (
               <TransitionGroup>
                 <CSSTransition
-                  key={location.key}
+                  key={location.pathname}
                   timeout={800}
                   classNames="fade"
                 >
@@ -257,7 +250,7 @@ class App extends Component {
             )}
           />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

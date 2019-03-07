@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Character from "./Character";
-import { exists } from "fs";
 
 class Favorites extends Component {
   componentDidMount() {
