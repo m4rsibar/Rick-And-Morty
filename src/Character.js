@@ -3,7 +3,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 class Character extends Component {
   state = {
-    isExpanded: false
+    isExpanded: false,
+    loved: false
   };
 
   toggleExpanded = () => {
@@ -59,14 +60,38 @@ class Character extends Component {
                   <span className="status">{this.props.character.status}</span>
                 </div>
 
-                <img
-                  className="heart"
-                  src="https://img.icons8.com/material-outlined/24/000000/hearts.png"
-                  style={{ marginLeft: ".5em", marginBottom: ".5em" }}
-                  onClick={() => {
-                    this.props.updateFavsState(this.props.character);
-                  }}
-                />
+                {this.state.loved ? (
+                  <span
+                    className="heart"
+                    style={{
+                      fontSize: "20px",
+                      color: "#ba102f"
+                    }}
+                    onClick={() => {
+                      this.props.updateFavsState(this.props.character);
+                      this.setState(prevState => ({
+                        loved: !prevState.loved
+                      }));
+                    }}
+                  >
+                    <i class="fas fa-heart" />
+                  </span>
+                ) : (
+                  <span
+                    className="heart"
+                    style={{
+                      fontSize: "20px"
+                    }}
+                    onClick={() => {
+                      this.props.updateFavsState(this.props.character);
+                      this.setState(prevState => ({
+                        loved: !prevState.loved
+                      }));
+                    }}
+                  >
+                    <i class="far fa-heart" />
+                  </span>
+                )}
 
                 <span
                   onClick={this.toggleExpanded}

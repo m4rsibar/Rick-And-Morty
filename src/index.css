@@ -107,7 +107,7 @@ body {
   width: 100%;
   border-radius: 5px;
   z-index: 10;
-  animation: lazy 4s;
+  animation: lazy 3s;
 }
 
 @keyframes lazy {
