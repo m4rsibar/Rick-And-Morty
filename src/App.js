@@ -31,18 +31,22 @@ class App extends Component {
     this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
     this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
     this.gatherAllCharacters();
+    localStorage.getItem("favs") &&
+      this.setState({
+        favorites: JSON.parse(localStorage.getItem("favs"))
+      });
   }
 
   componentDidUpdate = () => {
     localStorage.setItem("favs", JSON.stringify(this.state.favorites));
   };
 
-  componentWillMount = () => {
-    localStorage.getItem("favs") &&
-      this.setState({
-        favorites: JSON.parse(localStorage.getItem("favs"))
-      });
-  };
+  // componentWillMount = () => {
+  //   localStorage.getItem("favs") &&
+  //     this.setState({
+  //       favorites: JSON.parse(localStorage.getItem("favs"))
+  //     });
+  // };
 
   updateFavsState = id => {
     this.setState(prevState => ({
