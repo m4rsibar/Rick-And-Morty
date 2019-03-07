@@ -516,6 +516,13 @@ body {
     margin-bottom: 5em;
   }
 
+  .heart {
+    padding: 0.5em;
+    /* background-color: blue; */
+    position: absolute;
+    bottom: 0;
+  }
+
   /******Planets Page******/
   .planetContainer {
     margin-left: 1em;
