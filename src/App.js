@@ -7,6 +7,7 @@ import NotFound from "./NotFound";
 import EpisodeList from "./EpisodeList";
 import Search from "./Search";
 import Loading from "./Loading";
+import Favorites from "./Favorites";
 import OutsideAlerter from "./OutsideAlerter";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -18,7 +19,42 @@ class App extends Component {
     episodes: [],
     search: "",
     isLoading: true,
-    menuOpen: false
+    menuOpen: false,
+    favorites: []
+  };
+
+  componentDidMount() {
+    this.fetchSomeData(
+      "https://rickandmortyapi.com/api/character/",
+      "characters"
+    );
+    this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
+    this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
+    this.gatherAllCharacters();
+  }
+
+  componentDidUpdate = () => {
+    localStorage.setItem("favs", JSON.stringify(this.state.favorites));
+  };
+
+  componentWillMount = () => {
+    localStorage.getItem("favs") &&
+      this.setState({
+        favorites: JSON.parse(localStorage.getItem("favs"))
+      });
+  };
+
+  updateFavsState = id => {
+    this.setState(prevState => ({
+      favorites: prevState.favorites.concat(id)
+    }));
+  };
+
+  addToFavs = id => {
+    localStorage.setItem("characters", id);
+  };
+  getFavorites = () => {
+    return JSON.parse(localStorage.getItem("favs"));
   };
 
   toTitleCase = str => {
@@ -34,22 +70,6 @@ class App extends Component {
       "characters"
     );
   };
-
-  componentDidMount() {
-    this.fetchSomeData(
-      "https://rickandmortyapi.com/api/character/",
-      "characters"
-    );
-    this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
-    this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
-    this.gatherAllCharacters();
-  }
-
-  // closeMenuIfOpen = () => {
-  //   if (this.state.menuOpen === true) {
-  //     this.setState({ menuOpen: false });
-  //   }
-  // };
 
   gatherAllCharacters = () => {
     fetch(`https://rickandmortyapi.com/api/character/`)
@@ -163,6 +183,8 @@ class App extends Component {
                             prevCharacter={this.state.charactersPrev}
                             fetchSomeData={this.fetchSomeData}
                             scroll={this.scroll}
+                            addToFavs={this.addToFavs}
+                            updateFavsState={this.updateFavsState}
                           />
                         )
                       }
@@ -213,6 +235,15 @@ class App extends Component {
                           />
                         )
                       }
+                    />
+                    <Route
+                      path="/favorites"
+                      render={() => (
+                        <Favorites
+                          favorites={this.state.favorites}
+                          getFavorites={this.getFavorites}
+                        />
+                      )}
                     />
                     <Route component={NotFound} />
                   </Switch>

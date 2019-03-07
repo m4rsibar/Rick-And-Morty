@@ -10,7 +10,11 @@ const CharacterList = props => {
       <div className="charactersBox">
         {props.characters.map((c, index) => (
           <CSSTransition key={c.id} timeout={700} classNames="fade">
-            <Character key={index} character={c} />
+            <Character
+              key={index}
+              character={c}
+              updateFavsState={props.updateFavsState}
+            />
           </CSSTransition>
         ))}
         <br />

@@ -4,7 +4,7 @@ export default class Loading extends Component {
   render() {
     return (
       <div className="spinner">
-        <div class="lds-ellipsis">
+        <div className="lds-ellipsis">
           <div />
           <div />
           <div />

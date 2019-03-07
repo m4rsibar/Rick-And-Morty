@@ -61,6 +61,10 @@ class Header extends Component {
             </Link>
           </li>
 
+          <li>
+            <Link to="/favorites">Favorites</Link>
+          </li>
+
           <div
             className="arrows"
             style={{

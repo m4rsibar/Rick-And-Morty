@@ -107,7 +107,7 @@ body {
   width: 100%;
   border-radius: 5px;
   z-index: 10;
-  transition: 2000ms ease;
+  transition: 8000ms ease;
 }
 
 .topBox {

@@ -59,6 +59,13 @@ class Character extends Component {
                   <span className="status">{this.props.character.status}</span>
                 </div>
 
+                <img
+                  src="https://img.icons8.com/material-outlined/24/000000/hearts.png"
+                  style={{ marginLeft: ".5em", marginBottom: ".5em" }}
+                  onClick={() => {
+                    this.props.updateFavsState(this.props.character);
+                  }}
+                />
                 <span
                   onClick={this.toggleExpanded}
                   className="downArrowContainer"
