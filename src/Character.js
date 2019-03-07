@@ -74,7 +74,9 @@ class Character extends Component {
                       }));
                     }}
                   >
-                    <i class="fas fa-heart" />
+                    <span className="heart">
+                      <i class="fas fa-heart" />
+                    </span>
                   </span>
                 ) : (
                   <span
