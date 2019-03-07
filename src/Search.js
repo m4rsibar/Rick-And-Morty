@@ -40,7 +40,11 @@ class Search extends Component {
         {results.length < 100 ? (
           <div className="charactersBox">
             {results.map((c, index) => (
-              <Character key={index} character={c} />
+              <Character
+                key={index}
+                character={c}
+                updateFavsState={this.props.updateFavsState}
+              />
             ))}
           </div>
         ) : null}

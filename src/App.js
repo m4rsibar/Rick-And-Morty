@@ -238,6 +238,8 @@ class App extends Component {
                           <Search
                             characters={this.state.allCharacters}
                             handleSubmit={this.handleSubmit}
+                            addToFavs={this.addToFavs}
+                            updateFavsState={this.updateFavsState}
                           />
                         )
                       }
