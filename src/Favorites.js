@@ -10,7 +10,11 @@ class Favorites extends Component {
   render() {
     {
       if (localStorage.getItem("favs") == "[]") {
-        return <div>"You have no favorites!"</div>;
+        return (
+          <div style={{ top: "8em", position: "absolute" }}>
+            "You have no favorites..."
+          </div>
+        );
       } else {
         return (
           <div className="charactersBox">

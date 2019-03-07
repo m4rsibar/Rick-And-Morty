@@ -231,6 +231,10 @@ body {
   box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.199);
 }
 
+.heart {
+  cursor: pointer;
+}
+
 /********************Planets Page**************************/
 
 .planetsBox,

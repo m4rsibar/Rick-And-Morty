@@ -60,6 +60,7 @@ class Character extends Component {
                 </div>
 
                 <img
+                  className="heart"
                   src="https://img.icons8.com/material-outlined/24/000000/hearts.png"
                   style={{ marginLeft: ".5em", marginBottom: ".5em" }}
                   onClick={() => {
