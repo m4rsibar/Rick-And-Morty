@@ -36,10 +36,12 @@ class App extends Component {
         favorites: JSON.parse(localStorage.getItem("favs"))
       });
   }
-
+  //everytime a heart is clicked, the "favorites" state updates (via the updateFavsState function), and sends the updated version of itself to local storage.
   componentDidUpdate = () => {
     localStorage.setItem("favs", JSON.stringify(this.state.favorites));
   };
+
+  //when a card's heart gets clicked, the previous state of "favorites" gets added to with the object containing the information of the character card clicked, the object information is passed upstream from the Character's component into I.D argument
 
   updateFavsState = id => {
     this.setState(prevState => ({
@@ -47,13 +49,12 @@ class App extends Component {
     }));
   };
 
-  addToFavs = id => {
-    localStorage.setItem("characters", id);
-  };
+  //goes to local storage and retrieves the "favs" (which is an object of all of the <3'd  characters) then parses them from a string, to JSON so it can be mapped over and displayed in the Favorites Component.
   getFavorites = () => {
     return JSON.parse(localStorage.getItem("favs"));
   };
 
+  //Capitalizes the first letter of every word.
   toTitleCase = str => {
     return str.replace(/\w\S*/g, function(txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -180,7 +181,6 @@ class App extends Component {
                             prevCharacter={this.state.charactersPrev}
                             fetchSomeData={this.fetchSomeData}
                             scroll={this.scroll}
-                            addToFavs={this.addToFavs}
                             updateFavsState={this.updateFavsState}
                           />
                         )
@@ -238,7 +238,6 @@ class App extends Component {
                           <Search
                             characters={this.state.allCharacters}
                             handleSubmit={this.handleSubmit}
-                            addToFavs={this.addToFavs}
                             updateFavsState={this.updateFavsState}
                           />
                         )

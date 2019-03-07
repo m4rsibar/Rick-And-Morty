@@ -13,7 +13,7 @@ class Next extends Component {
       return `${this.props.nextEpisode}`;
     }
   };
-  //returns the state needed to be updated with the new pages information based on the location pathname, and plugs it into to the onClick's data fetching function
+  //returns the name of state that needs to be updated with the new pages information based on the location pathname, and plugs it into to the onClick's data fetching function
   determineStateToSet = () => {
     if (this.props.location.pathname === "/") {
       return "characters";

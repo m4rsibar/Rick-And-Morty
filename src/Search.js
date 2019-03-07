@@ -21,7 +21,6 @@ class Search extends Component {
       results = results.filter(result => {
         return result.name.toLowerCase().includes(searchText);
       });
-      console.log(results);
     }
 
     return (

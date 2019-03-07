@@ -13,8 +13,16 @@ class Favorites extends Component {
         window.localStorage.length < 1
       ) {
         return (
-          <div style={{ top: "8em", position: "absolute" }}>
-            "You have no favorites..."
+          <div
+            style={{
+              position: "absolute",
+              top: "40%",
+              left: "30%",
+              fontFamily: "Poppins",
+              fontSize: "2em"
+            }}
+          >
+            You have no favorites...
           </div>
         );
       } else {
