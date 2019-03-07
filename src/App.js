@@ -224,6 +224,15 @@ class App extends Component {
                       }
                     />
                     <Route
+                      path="/favorites"
+                      render={() => (
+                        <Favorites
+                          favorites={this.state.favorites}
+                          getFavorites={this.getFavorites}
+                        />
+                      )}
+                    />
+                    <Route
                       path="/search"
                       render={() =>
                         this.state.isLoading ? (
@@ -236,15 +245,7 @@ class App extends Component {
                         )
                       }
                     />
-                    <Route
-                      path="/favorites"
-                      render={() => (
-                        <Favorites
-                          favorites={this.state.favorites}
-                          getFavorites={this.getFavorites}
-                        />
-                      )}
-                    />
+
                     <Route component={NotFound} />
                   </Switch>
                 </CSSTransition>

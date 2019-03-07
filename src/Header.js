@@ -34,6 +34,9 @@ class Header extends Component {
             <NavLink to="/episodes">Episodes</NavLink>
           </li>
           <li>
+            <Link to="/favorites">Favorites</Link>
+          </li>
+          <li>
             <NavLink
               to="/search"
               style={{
@@ -59,10 +62,6 @@ class Header extends Component {
                 }}
               />
             </Link>
-          </li>
-
-          <li>
-            <Link to="/favorites">Favorites</Link>
           </li>
 
           <div
