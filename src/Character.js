@@ -67,6 +67,7 @@ class Character extends Component {
                     this.props.updateFavsState(this.props.character);
                   }}
                 />
+
                 <span
                   onClick={this.toggleExpanded}
                   className="downArrowContainer"
