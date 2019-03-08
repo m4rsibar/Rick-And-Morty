@@ -505,6 +505,9 @@ body {
     transform: translateX(-100%);
     transition: 0.4s cubic-bezier(0.17, 0.67, 0.54, 1.13);
   }
+  .prevIcon {
+    margin-right: auto;
+  }
 
   /******Character Page******/
   .charactersBox {
