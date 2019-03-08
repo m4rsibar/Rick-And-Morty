@@ -85,7 +85,10 @@ class Character extends Component {
                       fontSize: "20px"
                     }}
                     onClick={() => {
-                      this.props.updateFavsState(this.props.character);
+                      this.props.updateFavsState(
+                        this.props.character,
+                        this.props.character.id
+                      );
                       this.setState(prevState => ({
                         loved: !prevState.loved
                       }));

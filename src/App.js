@@ -31,6 +31,7 @@ class App extends Component {
     this.fetchSomeData("https://rickandmortyapi.com/api/location", "planets");
     this.fetchSomeData("https://rickandmortyapi.com/api/episode/", "episodes");
     this.gatherAllCharacters();
+
     localStorage.getItem("favs") &&
       this.setState({
         favorites: JSON.parse(localStorage.getItem("favs"))
@@ -50,9 +51,14 @@ class App extends Component {
   //when a card's heart gets clicked, the previous state of "favorites" gets added to with the object containing the information of the character card clicked, the object information is passed upstream from the Character's component into I.D argument
 
   updateFavsState = id => {
-    this.setState(prevState => ({
-      favorites: prevState.favorites.concat(id)
-    }));
+    const favorites = this.state.favorites;
+    const checkUsername = obj => obj.id === id.id;
+
+    if (favorites.some(checkUsername) === false) {
+      this.setState(prevState => ({
+        favorites: prevState.favorites.concat(id)
+      }));
+    } else alert(`you've already favorited that character`);
   };
 
   //goes to local storage and retrieves the "favs" (which is an object of all of the <3'd  characters) then parses them from a string, to JSON so it can be mapped over and displayed in the Favorites Component.
