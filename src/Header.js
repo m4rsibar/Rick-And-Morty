@@ -11,7 +11,8 @@ class Header extends Component {
         className="headerBox"
         style={{
           position:
-            this.props.location.pathname === "/" || "/search" ? "fixed" : ""
+            this.props.location.pathname === "/" || "/search" ? "fixed" : "",
+          height: "0"
         }}
       >
         <ul

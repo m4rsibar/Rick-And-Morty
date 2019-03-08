@@ -3,7 +3,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 class Character extends Component {
   state = {
-    isExpanded: false
+    isExpanded: false,
+    loved: false
   };
 
   toggleExpanded = () => {
