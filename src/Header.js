@@ -15,7 +15,6 @@ class Header extends Component {
         }}
       >
         <ul
-          className={this.props.menuOpen ? "headerUl open" : "headerUl closed"}
           style={
             this.props.menuOpen
               ? { visiblity: "initial" }

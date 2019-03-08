@@ -4,6 +4,10 @@ import Prev from "./Prev";
 import Next from "./Next";
 
 class EpisodeList extends Component {
+  componentDidMount() {
+    this.props.closeMenu();
+  }
+
   render() {
     return (
       <div className="episodesBox">

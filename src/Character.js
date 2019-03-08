@@ -3,8 +3,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 class Character extends Component {
   state = {
-    isExpanded: false,
-    loved: false
+    isExpanded: false
   };
 
   toggleExpanded = () => {
@@ -75,7 +74,7 @@ class Character extends Component {
                     }}
                   >
                     <span className="heart">
-                      <i class="fas fa-heart" />
+                      <i className="fas fa-heart" />
                     </span>
                   </span>
                 ) : (
@@ -91,7 +90,7 @@ class Character extends Component {
                       }));
                     }}
                   >
-                    <i class="far fa-heart" />
+                    <i className="far fa-heart" />
                   </span>
                 )}
 

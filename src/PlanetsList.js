@@ -5,6 +5,10 @@ import Next from "./Next";
 import Prev from "./Prev";
 
 class PlanetsList extends Component {
+  componentDidMount() {
+    this.props.closeMenu();
+  }
+
   render() {
     return (
       <div className="planetsBox">

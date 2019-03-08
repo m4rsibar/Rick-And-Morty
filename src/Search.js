@@ -6,6 +6,10 @@ class Search extends Component {
     searchText: ""
   };
 
+  componentDidMount() {
+    this.props.closeMenu();
+  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };

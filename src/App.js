@@ -41,6 +41,12 @@ class App extends Component {
     localStorage.setItem("favs", JSON.stringify(this.state.favorites));
   };
 
+  closeMenu = () => {
+    if (window.innerWidth <= 768) {
+      this.setState({ menuOpen: false });
+    }
+  };
+
   //when a card's heart gets clicked, the previous state of "favorites" gets added to with the object containing the information of the character card clicked, the object information is passed upstream from the Character's component into I.D argument
 
   updateFavsState = id => {
@@ -144,6 +150,7 @@ class App extends Component {
               menuOpen={this.state.menuOpen}
               toggleMenu={this.toggleMenu}
               scroll={this.scroll}
+              closeMenu={this.closeMenu}
             />
           </OutsideAlerter>
           {this.state.menuOpen ? (
@@ -151,6 +158,7 @@ class App extends Component {
           ) : (
             <span className="menuIcon">
               <img
+                alt="Menu Icon"
                 src="https://img.icons8.com/material/34/000000/menu.png"
                 style={{ marginTop: "1em" }}
                 onClick={this.toggleMenu}
@@ -182,6 +190,7 @@ class App extends Component {
                             fetchSomeData={this.fetchSomeData}
                             scroll={this.scroll}
                             updateFavsState={this.updateFavsState}
+                            closeMenu={this.closeMenu}
                           />
                         )
                       }
@@ -199,6 +208,7 @@ class App extends Component {
                             fetchSomeData={this.fetchSomeData}
                             toggleMenu={this.toggleMenu}
                             scroll={this.scroll}
+                            closeMenu={this.closeMenu}
                           />
                         )
                       }
@@ -216,6 +226,7 @@ class App extends Component {
                             fetchSomeData={this.fetchSomeData}
                             toggleMenu={this.toggleMenu}
                             scroll={this.scroll}
+                            closeMenu={this.closeMenu}
                           />
                         )
                       }
@@ -226,6 +237,7 @@ class App extends Component {
                         <Favorites
                           favorites={this.state.favorites}
                           getFavorites={this.getFavorites}
+                          closeMenu={this.closeMenu}
                         />
                       )}
                     />
@@ -239,6 +251,7 @@ class App extends Component {
                             characters={this.state.allCharacters}
                             handleSubmit={this.handleSubmit}
                             updateFavsState={this.updateFavsState}
+                            closeMenu={this.closeMenu}
                           />
                         )
                       }
