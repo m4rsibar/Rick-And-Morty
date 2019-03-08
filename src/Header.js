@@ -49,7 +49,7 @@ class Header extends Component {
             <NavLink to="/episodes">Episodes</NavLink>
           </li>
           <li>
-            <Link to="/favorites">Favorites</Link>
+            <NavLink to="/favorites">Favorites</NavLink>
           </li>
           <li>
             <NavLink

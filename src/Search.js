@@ -36,7 +36,7 @@ class Search extends Component {
             placeholder="Search For a Character..."
             onChange={this.handleChange}
             className="searchbar"
-            autocomplete="off"
+            autoComplete="off"
           />
         </form>
         {/* needs work, not the best way of optimizing */}

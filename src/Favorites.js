@@ -28,8 +28,8 @@ class Favorites extends Component {
     } else {
       return (
         <div className="charactersBox">
-          {this.props.getFavorites().map(f => (
-            <Character character={f} />
+          {this.props.getFavorites().map((f, index) => (
+            <Character character={f} k key={index} />
           ))}
         </div>
       );

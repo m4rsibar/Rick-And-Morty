@@ -157,6 +157,7 @@ class App extends Component {
               toggleMenu={this.toggleMenu}
               scroll={this.scroll}
               closeMenu={this.closeMenu}
+              location={this.props.location}
             />
           </OutsideAlerter>
           {this.state.menuOpen ? (
@@ -238,6 +239,7 @@ class App extends Component {
                       }
                     />
                     <Route
+                      exact
                       path="/favorites"
                       render={() => (
                         <Favorites

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { withRouter } from "react-router-dom";
 
 class Character extends Component {
   state = {
@@ -12,6 +13,10 @@ class Character extends Component {
       isExpanded: !this.state.isExpanded
     });
   };
+
+  componentDidMount() {
+    console.log(this.props.location);
+  }
 
   render() {
     let type = this.props.character.type;
@@ -119,4 +124,4 @@ class Character extends Component {
   }
 }
 
-export default Character;
+export default withRouter(Character);
