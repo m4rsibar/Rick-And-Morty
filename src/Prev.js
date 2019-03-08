@@ -25,22 +25,20 @@ class Prev extends Component {
 
   render() {
     return (
-      <span className="previousArrow">
-        <Link
-          to="#"
-          onClick={e => {
-            e.preventDefault();
-            this.props.fetchSomeData(this.choosePrev(), this.chooseData());
-          }}
-        >
-          <img
-            className="prevIcon"
-            src="https://img.icons8.com/material/34/000000/back.png"
-            alt="Previous Page"
-            title="Previous Page"
-          />
-        </Link>
-      </span>
+      <Link
+        to="#"
+        onClick={e => {
+          e.preventDefault();
+          this.props.fetchSomeData(this.choosePrev(), this.chooseData());
+        }}
+      >
+        <img
+          className="prevIcon"
+          src="https://img.icons8.com/material/34/000000/back.png"
+          alt="Previous Page"
+          title="Previous Page"
+        />
+      </Link>
     );
   }
 }

@@ -24,6 +24,20 @@ class Header extends Component {
           }
         >
           <li>
+            <Link to="#" onClick={() => this.props.randomizeCharacters()}>
+              <img
+                src="https://img.icons8.com/material/24/000000/synchronize.png"
+                alt="Randomize"
+                title="Randomize Characters"
+                className="randomize"
+                style={{
+                  display:
+                    this.props.location.pathname === "/" ? "initial" : "none"
+                }}
+              />
+            </Link>
+          </li>
+          <li>
             <NavLink exact to="/">
               Characters
             </NavLink>
@@ -49,20 +63,6 @@ class Header extends Component {
             >
               Search
             </NavLink>
-          </li>
-          <li>
-            <Link to="#" onClick={() => this.props.randomizeCharacters()}>
-              <img
-                src="https://img.icons8.com/material/24/000000/synchronize.png"
-                alt="Randomize"
-                title="Randomize Characters"
-                className="randomize"
-                style={{
-                  display:
-                    this.props.location.pathname === "/" ? "initial" : "none"
-                }}
-              />
-            </Link>
           </li>
 
           <div
