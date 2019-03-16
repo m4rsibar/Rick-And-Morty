@@ -29,7 +29,11 @@ class Favorites extends Component {
       return (
         <div className="charactersBox">
           {this.props.getFavorites().map((f, index) => (
-            <Character character={f} k key={index} />
+            <Character
+              character={f}
+              key={index}
+              removeFromFavs={this.props.removeFromFavs}
+            />
           ))}
         </div>
       );

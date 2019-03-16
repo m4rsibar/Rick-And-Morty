@@ -37,6 +37,16 @@ class App extends Component {
         favorites: JSON.parse(localStorage.getItem("favs"))
       });
   }
+
+  removeFromFavs = id => {
+    const newFavorites = this.state.favorites.filter(i => {
+      return i.id !== id;
+    });
+
+    this.setState({
+      favorites: [...newFavorites]
+    });
+  };
   //everytime a heart is clicked, the "favorites" state updates (via the updateFavsState function), and sends the updated version of itself to local storage.
   componentDidUpdate = () => {
     localStorage.setItem("favs", JSON.stringify(this.state.favorites));
@@ -198,6 +208,7 @@ class App extends Component {
                             scroll={this.scroll}
                             updateFavsState={this.updateFavsState}
                             closeMenu={this.closeMenu}
+                            removeFromFavs={this.removeFromFavs}
                           />
                         )
                       }
@@ -246,6 +257,7 @@ class App extends Component {
                           favorites={this.state.favorites}
                           getFavorites={this.getFavorites}
                           closeMenu={this.closeMenu}
+                          removeFromFavs={this.removeFromFavs}
                         />
                       )}
                     />

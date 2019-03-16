@@ -8,15 +8,22 @@ class Character extends Component {
     loved: false
   };
 
+  handleClick = location => {
+    if (location === "/favorites") {
+      this.props.removeFromFavs(this.props.character.id);
+    } else {
+      this.props.updateFavsState(this.props.character);
+      this.setState(prevState => ({
+        loved: !prevState.loved
+      }));
+    }
+  };
+
   toggleExpanded = () => {
     this.setState({
       isExpanded: !this.state.isExpanded
     });
   };
-
-  componentDidMount() {
-    console.log(this.props.location);
-  }
 
   render() {
     let type = this.props.character.type;
@@ -65,7 +72,8 @@ class Character extends Component {
                   <span className="status">{this.props.character.status}</span>
                 </div>
 
-                {this.state.loved ? (
+                {this.state.loved ||
+                this.props.location.pathname === "/favorites" ? (
                   <span
                     className="heart"
                     style={{
@@ -73,10 +81,7 @@ class Character extends Component {
                       color: "#ba102f"
                     }}
                     onClick={() => {
-                      this.props.updateFavsState(this.props.character);
-                      this.setState(prevState => ({
-                        loved: !prevState.loved
-                      }));
+                      this.handleClick(this.props.location.pathname);
                     }}
                   >
                     <span className="heart">
@@ -90,13 +95,7 @@ class Character extends Component {
                       fontSize: "20px"
                     }}
                     onClick={() => {
-                      this.props.updateFavsState(
-                        this.props.character,
-                        this.props.character.id
-                      );
-                      this.setState(prevState => ({
-                        loved: !prevState.loved
-                      }));
+                      this.handleClick(this.props.location.pathname);
                     }}
                   >
                     <i className="far fa-heart" />

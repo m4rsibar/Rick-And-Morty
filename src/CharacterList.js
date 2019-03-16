@@ -17,6 +17,7 @@ class CharacterList extends Component {
             character={c}
             updateFavsState={this.props.updateFavsState}
             location={this.props.location}
+            removeFromFavs={this.props.removeFromFavs}
           />
         ))}
         <br />
