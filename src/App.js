@@ -42,7 +42,6 @@ class App extends Component {
     const newFavorites = this.state.favorites.filter(i => {
       return i.id !== id;
     });
-
     this.setState({
       favorites: [...newFavorites]
     });
@@ -50,6 +49,7 @@ class App extends Component {
   //everytime a heart is clicked, the "favorites" state updates (via the updateFavsState function), and sends the updated version of itself to local storage.
   componentDidUpdate = () => {
     localStorage.setItem("favs", JSON.stringify(this.state.favorites));
+    this.getFavorites();
   };
 
   closeMenu = () => {

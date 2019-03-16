@@ -6,6 +6,9 @@ class Favorites extends Component {
     this.props.getFavorites();
     this.props.closeMenu();
   }
+  componentDidUpdate() {
+    this.props.getFavorites();
+  }
 
   render() {
     if (
@@ -28,7 +31,7 @@ class Favorites extends Component {
     } else {
       return (
         <div className="charactersBox">
-          {this.props.getFavorites().map((f, index) => (
+          {this.props.favorites.map((f, index) => (
             <Character
               character={f}
               key={index}
